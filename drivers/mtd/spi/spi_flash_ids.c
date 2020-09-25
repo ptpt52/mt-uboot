@@ -69,6 +69,8 @@ const struct spi_flash_info spi_flash_ids[] = {
 	{"gd25q128b",	   INFO(0xc84018, 0x0, 64 * 1024,   256, SECT_4K) },
 	{"H25Q128b",	   INFO(0x684018, 0x0, 64 * 1024,   256, 0) },
 	{"gd25lq32",	   INFO(0xc86016, 0x0, 64 * 1024,    64, SECT_4K) },
+	{"GD25LQ128",	   INFO(0xc86018, 0x00,	64 * 1024,  256, SECT_4K) },
+	{"GD25Q256",	   INFO(0xc84019, 0x00,	64 * 1024,  512, SECT_4K) },
 #endif
 #ifdef CONFIG_SPI_FLASH_ISSI		/* ISSI */
 	{"is25lq040b",	   INFO(0x9d4013, 0x0, 64 * 1024,    8, 0)  },
@@ -192,6 +194,18 @@ const struct spi_flash_info spi_flash_ids[] = {
 	{"w25q256fw",	   INFO(0xef6019, 0x0,	64 * 1024,   512, RD_FULL | WR_QPP | SECT_4K) },
 	{"w25q256jw",	   INFO(0xef7019, 0x0,	64 * 1024,   512, RD_FULL | WR_QPP | SECT_4K) },
 #endif
+	{"AT26DF161",          INFO(0x1f4600, 0x00, 64 * 1024, 32,  0) },
+	{"FL016AIF",           INFO(0x010214, 0x00, 64 * 1024, 32,  0) },
+	{"S25FL256S",          INFO(0x010219, 0x01, 64 * 1024, 512, 1) },
+	{"S25FL132K",          INFO(0x014016, 0x40, 64 * 1024, 64,  0) },
+	{"S25FL064L",          INFO(0x016017, 0x00, 64 * 1024, 128, 0) },
+	{"F25L64QA",           INFO(0x8c4117, 0x00, 64 * 1024, 128, 0) }, //ESMT
+	{"F25L32QA",           INFO(0x8c4116, 0x41, 64 * 1024, 64,  0) }, //ESMT
+	{"EN25F16",            INFO(0x1c3115, 0x31, 64 * 1024, 32,  0) },
+	{"EN25QH32B",          INFO(0x1c7016, 0x70, 64 * 1024, 64,  0) },
+	{"EN25F32",            INFO(0x1c3116, 0x31, 64 * 1024, 64,  0) },
+	{"EN25F64",            INFO(0x1c2017, 0x20, 64 * 1024, 128, 0) }, //EN25P64
+	{"EN25QH64A",          INFO(0x1c7017, 0x70, 64 * 1024, 128, 0) },
 	{},	/* Empty entry to terminate the list */
 	/*
 	 * Note:
