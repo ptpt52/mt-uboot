@@ -397,6 +397,27 @@ cleanup:
 	return NULL;
 }
 
+#define RGB_RED 7
+#define RGB_GREEN 8
+#define RGB_BLUE 6
+
+static void boot_status_led_set(int color)
+{
+	char gpio_cmd[32];
+
+	/* off all leds */
+	snprintf(gpio_cmd, sizeof(gpio_cmd), "gpio set %d", RGB_RED);
+	run_command(gpio_cmd, 0);
+	snprintf(gpio_cmd, sizeof(gpio_cmd), "gpio set %d", RGB_GREEN);
+	run_command(gpio_cmd, 0);
+	snprintf(gpio_cmd, sizeof(gpio_cmd), "gpio set %d", RGB_BLUE);
+	run_command(gpio_cmd, 0);
+
+	/* on this color */
+	snprintf(gpio_cmd, sizeof(gpio_cmd), "gpio clear %d", color);
+	run_command(gpio_cmd, 0);
+}
+
 static void bootmenu_show(int delay)
 {
 	int init = 0;
@@ -407,6 +428,8 @@ static void bootmenu_show(int delay)
 	struct bootmenu_data *bootmenu;
 	struct bootmenu_entry *iter;
 	char *option, *sep;
+
+	boot_status_led_set(RGB_RED);
 
 	/* If delay is 0 do not create menu, just run first entry */
 	if (delay == 0) {
@@ -464,6 +487,9 @@ cleanup:
 		puts(ANSI_CLEAR_CONSOLE);
 		printf(ANSI_CURSOR_POSITION, 1, 1);
 	}
+
+	/* ken: Red on, Green off, next wait system to blink */
+	boot_status_led_set(RGB_GREEN);
 
 	if (title && command) {
 		debug("Starting entry '%s'\n", title);
