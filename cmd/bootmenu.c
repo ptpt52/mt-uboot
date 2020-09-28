@@ -429,7 +429,7 @@ static void bootmenu_show(int delay)
 	struct bootmenu_entry *iter;
 	char *option, *sep;
 
-	boot_status_led_set(RGB_RED);
+	boot_status_led_set(RGB_GREEN);
 
 	/* If delay is 0 do not create menu, just run first entry */
 	if (delay == 0) {
@@ -489,7 +489,7 @@ cleanup:
 	}
 
 	/* ken: Red on, Green off, next wait system to blink */
-	boot_status_led_set(RGB_GREEN);
+	//boot_status_led_set(RGB_GREEN);
 
 	if (title && command) {
 		debug("Starting entry '%s'\n", title);
