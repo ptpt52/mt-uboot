@@ -1,8 +1,10 @@
 #!/bin/sh
 
+export STAGING_DIR=~/Sources2/openwrt/x-wrt/staging_dir
+
 build_compile()
 {
-	make CROSS_COMPILE=/opt/buildroot-gcc492_mips_glibc/usr/bin/mipsel-linux-
+	make CROSS_COMPILE=~/Sources2/openwrt/x-wrt/staging_dir/toolchain-mipsel_24kc_gcc-11.2.0_musl/bin/mipsel-openwrt-linux-
 }
 
 build_nand()
